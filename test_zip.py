@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 
 
 def test_csv():
-    with zipfile.ZipFile('tmp/Archive.zip') as zip_file:
+    with zipfile.ZipFile('zipped/test_files.zip') as zip_file:
         with zip_file.open('csv_file.csv') as csv_file:
             content = csv_file.read().decode('utf-8-sig')
             csvreader = list(csv.reader(content.splitlines()))
@@ -20,7 +20,7 @@ def test_csv():
 
 
 def test_pdf():
-    with zipfile.ZipFile('zipped/zipped_files1.zip') as zip_file:
+    with zipfile.ZipFile('zipped/test_files.zip') as zip_file:
         with zip_file.open('pdf_file1.pdf') as pdf_file:
             reader = PdfReader(pdf_file)
             page_text = reader.pages[1].extract_text()
@@ -33,7 +33,7 @@ def test_pdf():
 
 
 def test_xlsx():
-    with zipfile.ZipFile('zipped/zipped_files1.zip') as zip_file:
+    with zipfile.ZipFile('zipped/test_files.zip') as zip_file:
         with zip_file.open('report.xlsx') as xlsx_file:
             workbook = load_workbook(xlsx_file)
             sheet = workbook.active
